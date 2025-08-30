@@ -1,0 +1,12 @@
+powershell -Command "@'
+fastapi
+uvicorn[standard]
+streamlit
+pydantic
+python-dotenv
+requests
+huggingface-hub
+# Optional heavy (only if you want HF transformers locally):
+# transformers
+# torch
+'@ | Set-Content -Encoding UTF8 requirements.txt"

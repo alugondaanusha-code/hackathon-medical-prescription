@@ -1,0 +1,23 @@
+powershell -Command "@'
+{
+  "drugs": [
+    {"name": "Paracetamol", "aliases": ["Acetaminophen"], "adult_dose": "500 mg", "child_dose": "250 mg"},
+    {"name": "Ibuprofen", "aliases": [], "adult_dose": "400 mg", "child_dose": "200 mg"},
+    {"name": "Amoxicillin", "aliases": [], "adult_dose": "500 mg", "child_dose": "250 mg"}
+  ],
+  "interactions": [
+    {"pair": ["Paracetamol", "Ibuprofen"], "severity": "Moderate", "note": "Concurrent use may increase GI irritation. Take with food and avoid exceeding recommended doses."},
+    {"pair": ["Ibuprofen", "Amoxicillin"], "severity": "Low", "note": "No significant interaction for most patients."}
+  ],
+  "alternatives": {
+    "Paracetamol": ["Ibuprofen"],
+    "Ibuprofen": ["Paracetamol"],
+    "Amoxicillin": ["Azithromycin"]
+  },
+  "max_daily_dose_mg": {
+    "Paracetamol": {"adult": 4000, "child": 60},
+    "Ibuprofen": {"adult": 1200, "child": 10},
+    "Amoxicillin": {"adult": 1500, "child": 50}
+  }
+}
+'@ | Set-Content -Encoding UTF8 datasets\drug_data.json"
